@@ -1,0 +1,38 @@
+.score_row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.score_card {
+    margin: auto;
+}
+
+.next_throw {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0 10% 0 10%;
+}
+
+.result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 5em;
+    font-weight: bold;
+}
+
+.game_count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+}

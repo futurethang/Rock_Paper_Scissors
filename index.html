@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    
+        <div class="container">
+            <div class="row score_row">
+                <div class="col-md-6">
+                    <div class="card score_card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">User Plays:</h5>
+                            <h1 id="user"></h1>
+                            <span id="userScore">___</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card score_card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Computer Plays:</h5>
+                            <h1 id="computer"></h1>
+                            <span id="computerScore">___</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row next_throw">
+                <div class="col-md-12 next_throw">
+                    <a name="" id="rock" class="btn btn-primary" href="#" role="button">Rock</a>
+                    <a name="" id="paper" class="btn btn-primary" href="#" role="button">Paper</a>
+                    <a name="" id="scissors" class="btn btn-primary" href="#" role="button">Scissors</a>
+                </div>
+            </div>
+            <div class="row result">
+                <div class="col-md-8">
+                    <span class="result_text" id="result"></span>
+                </div>
+            </div>
+            <div class="row game_count">
+                <div class="col-md-8">
+                    Games Played: <span class="game_count_text" id="games"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="game">
+                        <!-- <h2>User:</h2><span id="user">___</span> -->
+                        <!-- <h2>Computer:</h2><span id="computer">___</span> -->
+                        <!-- <h2>Result:</h2><span id="result">___</span> -->
+                        <!-- <h2># of Games:</h2><span id="games">___</span> -->
+                        <!-- <h2>User Score:</h2><span id="userScore">___</span> -->
+                        <!-- <h2>Computer Score:</h2><span id="computerScore">___</span> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+      <script type="text/javascript">
+    
+        var computerChoices = ["r", "p", "s"];
+        var userText = document.getElementById("user");
+        var computerText = document.getElementById("computer");
+        var result = document.getElementById("result");
+        var userScore = document.getElementById("userScore");
+        var userScore_count = 0;
+        var computerScore = document.getElementById("computerScore");
+        var computerScore_count = 0;
+        var num_games = document.getElementById("games");
+        var num_games_count = 0;
+
+// SET THE USER AND COMPUTER VARIABLES
+
+        var userGuess;
+        var computerGuess = function() {
+            return computerChoices[Math.floor(Math.random() * computerChoices.length)];
+        }
+        var computerReturn = function(play) {
+            var text;
+            switch (play) {
+                case "r":
+                    text = "ROCK"
+                    break;
+                case "p":
+                    text = "PAPER"
+                    break;
+                case "s":
+                    text = "SCISSORS"
+                    break;
+            }
+            return text;
+        }
+
+// THIS FUNCTION RUNS THE GAME CONDITIONS
+
+        let game = function(user, computer) {
+            num_games_count++;
+            num_games.textContent = num_games_count;
+
+            if (user == computer) {
+                result.textContent = "Tie!";
+            } else if (user == "r") {
+                if (computer == "s") {
+                    userScore_count = userScore_count + 1;
+                    // userScore_count ++;
+                    result.textContent = "WIN";
+                    console.log(userScore_count);
+                } else if (computer == "p") {
+                    computerScore_count = computerScore_count + 1;
+                    result.textContent = "YOU LOSE";
+                }
+            } else if (user == "p") {
+                if (computer == "r") {
+                    userScore_count = userScore_count + 1;
+                    result.textContent = "WIN";
+                    console.log(userScore_count);
+                } else if (computer == "s") {
+                    computerScore_count = computerScore_count + 1;
+                    result.textContent = "YOU LOSE";
+                }
+            } else if (user == "s") {
+                if (computer == "p") {
+                    userScore_count++;
+                    result.textContent = "WIN";
+                } else if (computer == "r") {
+                    computerScore_count = computerScore_count + 1;
+                    result.textContent = "YOU LOSE";
+                }
+            }
+            userScore.textContent = userScore_count;
+            computerScore.textContent = computerScore_count;
+        }
+
+        // USER PLAYS ROCK
+
+        document.getElementById("rock").onclick = function(){
+            userGuess = "r";
+            userText.textContent = "ROCK";   
+            
+            console.log(computerGuess());
+            
+            let play = computerGuess();
+            computerText.textContent = computerReturn(play);
+
+            return game(userGuess, play);
+        }
+
+        // USER PLAYS PAPER
+
+        document.getElementById("paper").onclick = function(){
+            userGuess = "p";
+            userText.textContent = "PAPER";   
+
+            console.log(computerGuess());
+            
+            let play = computerGuess();
+            computerText.textContent = computerReturn(play);
+
+            return game(userGuess, play);
+        }
+
+        // USER PLAYS SCISSORS
+
+        document.getElementById("scissors").onclick = function(){
+            userGuess = "s";
+            userText.textContent = "SCISSORS";   
+
+            console.log(computerGuess());
+            
+            let play = computerGuess();
+            computerText.textContent = computerReturn(play);
+
+            return game(userGuess, play);
+        }
+
+      </script>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+<!--
+
+at the moment the app works completely in text.
+
+next objectives are 
+
+1. improve the basic layout to look nice and balanced
+    make buttons for the choices.
+
+2. Replace the text returns with images
+
+
+
+
+
+
+
+-->
