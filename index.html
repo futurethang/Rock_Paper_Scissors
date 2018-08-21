@@ -18,8 +18,9 @@
                     <div class="card score_card" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title">User Plays:</h5>
-                            <h1 id="user"></h1>
-                            <span id="userScore">___</span>
+                            <img class="game_image" src="images/placeholder.jpg" id="user_image" alt="rock paper scissors image" /> 
+                            <h1 id="user" class="text_result"></h1>
+                            score: <span id="userScore" class="score_keep"</span>
                         </div>
                     </div>
                 </div>
@@ -27,8 +28,9 @@
                     <div class="card score_card" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title">Computer Plays:</h5>
-                            <h1 id="computer"></h1>
-                            <span id="computerScore">___</span>
+                            <img class="game_image" src="images/placeholder.jpg" id="cpu_image" alt="rock paper scissors image" /> 
+                            <h1 id="computer" class="text_result"></h1>
+                            score: <span id="computerScore" class="score_keep"</span>
                         </div>
                     </div>
                 </div>
@@ -76,6 +78,8 @@
         var computerScore_count = 0;
         var num_games = document.getElementById("games");
         var num_games_count = 0;
+        var html_user_image = document.getElementById("user_image");
+        var html_cpu_image = document.getElementById("cpu_image");
 
 // SET THE USER AND COMPUTER VARIABLES
 
@@ -88,12 +92,15 @@
             switch (play) {
                 case "r":
                     text = "ROCK"
+                    html_cpu_image.src = "images/rock.jpg"
                     break;
                 case "p":
                     text = "PAPER"
+                    html_cpu_image.src = "images/paper.jpg"
                     break;
                 case "s":
                     text = "SCISSORS"
+                    html_cpu_image.src = "images/scissors.jpg"
                     break;
             }
             return text;
@@ -144,7 +151,7 @@
         document.getElementById("rock").onclick = function(){
             userGuess = "r";
             userText.textContent = "ROCK";   
-            
+            html_user_image.src = "images/rock.jpg"
             console.log(computerGuess());
             
             let play = computerGuess();
@@ -158,7 +165,7 @@
         document.getElementById("paper").onclick = function(){
             userGuess = "p";
             userText.textContent = "PAPER";   
-
+            html_user_image.src = "images/paper.jpg"
             console.log(computerGuess());
             
             let play = computerGuess();
@@ -172,7 +179,7 @@
         document.getElementById("scissors").onclick = function(){
             userGuess = "s";
             userText.textContent = "SCISSORS";   
-
+            html_user_image.src = "images/scissors.jpg"
             console.log(computerGuess());
             
             let play = computerGuess();
