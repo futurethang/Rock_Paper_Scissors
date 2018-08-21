@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>ROCK. PAPER. SCISSORS.</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,7 +17,7 @@
                 <div class="col-md-6">
                     <div class="card score_card" style="width: 18rem;">
                         <div class="card-body">
-                            <h5 class="card-title">User Plays:</h5>
+                            <h5 class="card-title">YOU:</h5>
                             <img class="game_image" src="images/placeholder.jpg" id="user_image" alt="rock paper scissors image" /> 
                             <h1 id="user" class="text_result"></h1>
                             score: <span id="userScore" class="score_keep"</span>
@@ -27,7 +27,7 @@
                 <div class="col-md-6">
                     <div class="card score_card" style="width: 18rem;">
                         <div class="card-body">
-                            <h5 class="card-title">Computer Plays:</h5>
+                            <h5 class="card-title">COMPUTER:</h5>
                             <img class="game_image" src="images/placeholder.jpg" id="cpu_image" alt="rock paper scissors image" /> 
                             <h1 id="computer" class="text_result"></h1>
                             score: <span id="computerScore" class="score_keep"</span>
@@ -67,26 +67,24 @@
         </div>
         
       <script type="text/javascript">
-    
-        var computerChoices = ["r", "p", "s"];
+
+        // HTML WRITING VARIABLES
         var userText = document.getElementById("user");
         var computerText = document.getElementById("computer");
         var result = document.getElementById("result");
         var userScore = document.getElementById("userScore");
-        var userScore_count = 0;
         var computerScore = document.getElementById("computerScore");
-        var computerScore_count = 0;
-        var num_games = document.getElementById("games");
-        var num_games_count = 0;
         var html_user_image = document.getElementById("user_image");
         var html_cpu_image = document.getElementById("cpu_image");
+        var num_games = document.getElementById("games");
 
-// SET THE USER AND COMPUTER VARIABLES
-
+        // SET THE USER AND COMPUTER VARIABLES      
+        var computerChoices = ["r", "p", "s"];
+        var userScore_count = 0;
+        var computerScore_count = 0;
+        var num_games_count = 0;
         var userGuess;
-        var computerGuess = function() {
-            return computerChoices[Math.floor(Math.random() * computerChoices.length)];
-        }
+        var computerGuess = function() {return computerChoices[Math.floor(Math.random() * computerChoices.length)];}
         var computerReturn = function(play) {
             var text;
             switch (play) {
@@ -104,46 +102,6 @@
                     break;
             }
             return text;
-        }
-
-// THIS FUNCTION RUNS THE GAME CONDITIONS
-
-        let game = function(user, computer) {
-            num_games_count++;
-            num_games.textContent = num_games_count;
-
-            if (user == computer) {
-                result.textContent = "Tie!";
-            } else if (user == "r") {
-                if (computer == "s") {
-                    userScore_count = userScore_count + 1;
-                    // userScore_count ++;
-                    result.textContent = "WIN";
-                    console.log(userScore_count);
-                } else if (computer == "p") {
-                    computerScore_count = computerScore_count + 1;
-                    result.textContent = "YOU LOSE";
-                }
-            } else if (user == "p") {
-                if (computer == "r") {
-                    userScore_count = userScore_count + 1;
-                    result.textContent = "WIN";
-                    console.log(userScore_count);
-                } else if (computer == "s") {
-                    computerScore_count = computerScore_count + 1;
-                    result.textContent = "YOU LOSE";
-                }
-            } else if (user == "s") {
-                if (computer == "p") {
-                    userScore_count++;
-                    result.textContent = "WIN";
-                } else if (computer == "r") {
-                    computerScore_count = computerScore_count + 1;
-                    result.textContent = "YOU LOSE";
-                }
-            }
-            userScore.textContent = userScore_count;
-            computerScore.textContent = computerScore_count;
         }
 
         // USER PLAYS ROCK
@@ -188,6 +146,46 @@
             return game(userGuess, play);
         }
 
+        // THIS FUNCTION RUNS THE GAME CONDITIONS
+
+        let game = function(user, computer) {
+            num_games_count++;
+            num_games.textContent = num_games_count;
+
+            if (user == computer) {
+                result.textContent = "Tie!";
+            } else if (user == "r") {
+                if (computer == "s") {
+                    userScore_count = userScore_count + 1;
+                    // userScore_count ++;
+                    result.textContent = "WIN";
+                    console.log(userScore_count);
+                } else if (computer == "p") {
+                    computerScore_count = computerScore_count + 1;
+                    result.textContent = "YOU LOSE";
+                }
+            } else if (user == "p") {
+                if (computer == "r") {
+                    userScore_count = userScore_count + 1;
+                    result.textContent = "WIN";
+                    console.log(userScore_count);
+                } else if (computer == "s") {
+                    computerScore_count = computerScore_count + 1;
+                    result.textContent = "YOU LOSE";
+                }
+            } else if (user == "s") {
+                if (computer == "p") {
+                    userScore_count++;
+                    result.textContent = "WIN";
+                } else if (computer == "r") {
+                    computerScore_count = computerScore_count + 1;
+                    result.textContent = "YOU LOSE";
+                }
+            }
+            userScore.textContent = userScore_count;
+            computerScore.textContent = computerScore_count;
+        }
+
       </script>
     
     <!-- Optional JavaScript -->
@@ -197,23 +195,3 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
   </body>
 </html>
-
-
-<!--
-
-at the moment the app works completely in text.
-
-next objectives are 
-
-1. improve the basic layout to look nice and balanced
-    make buttons for the choices.
-
-2. Replace the text returns with images
-
-
-
-
-
-
-
--->
