@@ -1,18 +1,8 @@
 
-
-    font-family: 'Baloo Bhai', cursive;
-
-    font-family: 'Fredoka One', cursive;
-
-    font-family: 'Special Elite', cursive;
-
-    font-family: 'Bungee Inline', cursive;
-
-
-
 body {
     width: 900px;
     margin: auto;
+    background-image: url("images/linedpaper.png");
 }
 
 .score_row {
