@@ -1,5 +1,18 @@
+
+
+    font-family: 'Baloo Bhai', cursive;
+
+    font-family: 'Fredoka One', cursive;
+
+    font-family: 'Special Elite', cursive;
+
+    font-family: 'Bungee Inline', cursive;
+
+
+
 body {
     width: 900px;
+    margin: auto;
 }
 
 .score_row {
@@ -29,7 +42,7 @@ body {
     align-items: center;
     text-align: center;
     font-size: 5em;
-    font-weight: bold;
+    font-family: 'Bungee Inline', cursive;
 }
 
 .game_count {
@@ -39,10 +52,12 @@ body {
     text-align: center;
     font-size: 2em;
     font-weight: bold;
+    font-family: 'Fredoka One', cursive;
 }
 
 .score_keep {
     font-weight: bold;
+    font-family: 'Special Elite', cursive;
 }
 
 .game_image {
@@ -52,5 +67,9 @@ body {
 .text_result {
     font-size: 1em;
     margin: 18px 0 10px 0;
+    font-family: 'Special Elite', cursive;
 }
 
+.card-title {
+    font-family: 'Fredoka One', cursive;
+}
