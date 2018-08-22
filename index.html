@@ -157,32 +157,39 @@
 
             if (user == computer) {
                 result.textContent = "Tie!";
+                result.style = "color: rgb(99, 189, 187)";
             } else if (user == "r") {
                 if (computer == "s") {
                     userScore_count = userScore_count + 1;
                     // userScore_count ++;
                     result.textContent = "WIN";
+                    result.style = "color: rgb(245, 188, 74)";
                     console.log(userScore_count);
                 } else if (computer == "p") {
                     computerScore_count = computerScore_count + 1;
                     result.textContent = "YOU LOSE";
+                    result.style = "color: rgb(243, 102, 82)";
                 }
             } else if (user == "p") {
                 if (computer == "r") {
                     userScore_count = userScore_count + 1;
                     result.textContent = "WIN";
+                    result.style = "color: rgb(245, 188, 74)";
                     console.log(userScore_count);
                 } else if (computer == "s") {
                     computerScore_count = computerScore_count + 1;
                     result.textContent = "YOU LOSE";
+                    result.style = "color: rgb(243, 102, 82)";
                 }
             } else if (user == "s") {
                 if (computer == "p") {
                     userScore_count++;
                     result.textContent = "WIN";
+                    result.style = "color: rgb(245, 188, 74)";
                 } else if (computer == "r") {
                     computerScore_count = computerScore_count + 1;
                     result.textContent = "YOU LOSE";
+                    result.style = "color: rgb(243, 102, 82)";
                 }
             }
             userScore.textContent = userScore_count;
