@@ -17,12 +17,12 @@ To make the game more enjoyable to play, I made additional changes to the progra
 CHALLENGES: 
 
 The initial challenges required 
--- Setting basic variables with user input and function calls
--- Running those variable inputs through conditional logic to output a win/loss result
--- Write the results to the DOM
+* Setting basic variables with user input and function calls
+* Running those variable inputs through conditional logic to output a win/loss result
+* Write the results to the DOM
 
 The additional challenges presented by my personal touches included:
--- Adding onClick listeners for each of the buttons for available user inputs
--- Containing game logic within a function call to run once user selection is made
--- Using the game results to trigger image changes in the DOM
--- Adding additional styling to the page to look nice and present game information with a logical heirarchy.
+* Adding onClick listeners for each of the buttons for available user inputs
+* Containing game logic within a function call to run once user selection is made
+* Using the game results to trigger image changes in the DOM
+* Adding additional styling to the page to look nice and present game information with a logical heirarchy.
