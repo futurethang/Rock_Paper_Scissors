@@ -1,7 +1,10 @@
 # Rock_Paper_Scissors
-A stylized Rock Paper Scissors browser game, built with HTML, CSS and Javascript
+A stylized Rock Paper Scissors browser game, built with HTML, CSS and Javascript. [Play Rock Paper Scissors!](https://futurethang.github.io/Rock_Paper_Scissors/#)
 
 -----
+
+![rock_paper_scissors](https://user-images.githubusercontent.com/17099707/45703077-2f36b300-bb28-11e8-9868-da563900559e.png)
+
 
 This project is part of the front-end curriculum for the University of Washington Part-time Coding Bootcamp, presented by Trilogy Education. It served as a light introduction to Javascript conditional scripting with dynamic writing to the DOM. 
 
