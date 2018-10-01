@@ -30,7 +30,9 @@
     </div>
     <div class="row next_throw">
       <div class="col-md-12 next_throw">
-        <a class="btn btn-primary" href="#" id="rock" name="" role="button">Rock</a> <a class="btn btn-primary" href="#" id="paper" name="" role="button">Paper</a> <a class="btn btn-primary" href="#" id="scissors" name="" role="button">Scissors</a>
+        <a class="rps_pick btn btn-primary" href="#" id="rock" name="" role="button">Rock</a> 
+        <a class="rps_pick btn btn-primary" href="#" id="paper" name="" role="button">Paper</a> 
+        <a class="rps_pick btn btn-primary" href="#" id="scissors" name="" role="button">Scissors</a>
       </div>
     </div>
     <div class="row result">
@@ -79,8 +81,31 @@
                                 var html_cpu_image = document.getElementById("cpu_image");
                                 var num_games = document.getElementById("games");
 
+                                // GAME READY DOM
+                                function gameChoiceReset() {
+                                  html_user_image.src = "images/placeholder.jpg"
+                                  html_cpu_image.src = "images/placeholder.jpg"
+                                }
+                                
+
+                                // SET THE FIREBASE VARIABLES
+                                var fbRef = firebase.database().ref();
+                                // the user selects a play and hits "submit"
+                                  // requires action to store the selection in variable to send to fbRef
+                                  // requires submit DOM element
+                                // "Submit" writes the user choice to the right firebase ref for that player
+                                  // fbRef.push(player1selection, player2selection,);
+                                // it waits for a second input to move forward
+                                // once a choice is made by both players, it runs to compare the selections
+                                  // game(player1selection, player2selection);
+                                // displays are updated for each player
+                                  // 
+                                // values for games won/lost are written to fbRef
+                                  // fbRef.set(winner, loser);
+                                // new game ready
+
                                 // SET THE USER AND COMPUTER VARIABLES      
-                                var computerChoices = ["r", "p", "s"];
+                                var computerChoices = ["rock", "paper", "scissors"];
                                 var userScore_count = 0;
                                 var computerScore_count = 0;
                                 var num_games_count = 0;
@@ -107,25 +132,23 @@
 
                                 // USER PLAYS ROCK
                                 // $("#rock").on("click", )
-                                document.getElementById("rock").onclick = function () {
-                                    userGuess = "r";
-                                    userText.textContent = "ROCK";
+                                $(".rps_pick").on("click", function () {
+                                    alert("click");
+                                    userGuess = $(this).prop('id');
+                                    userText.textContent = userGuess;
                                     html_user_image.src = "images/rock.jpg"
-                                    console.log(computerGuess());
 
                                     let play = computerGuess();
                                     computerText.textContent = computerReturn(play);
 
                                     return game(userGuess, play);
-                                }
+                                })
 
                                 // USER PLAYS PAPER
-
                                 document.getElementById("paper").onclick = function () {
                                     userGuess = "p";
                                     userText.textContent = "PAPER";
                                     html_user_image.src = "images/paper.jpg"
-                                    console.log(computerGuess());
 
                                     let play = computerGuess();
                                     computerText.textContent = computerReturn(play);
@@ -134,12 +157,10 @@
                                 }
 
                                 // USER PLAYS SCISSORS
-
                                 document.getElementById("scissors").onclick = function () {
                                     userGuess = "s";
                                     userText.textContent = "SCISSORS";
                                     html_user_image.src = "images/scissors.jpg"
-                                    console.log(computerGuess());
 
                                     let play = computerGuess();
                                     computerText.textContent = computerReturn(play);
@@ -148,7 +169,6 @@
                                 }
 
                                 // THIS FUNCTION RUNS THE GAME CONDITIONS
-
                                 let game = function (user, computer) {
                                     num_games_count++;
                                     num_games.textContent = num_games_count;
