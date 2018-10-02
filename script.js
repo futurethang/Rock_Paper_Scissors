@@ -89,8 +89,14 @@ $(".rps_pick").on("click", function () {
   updateUserTextUnderImage(userGuess);
   updateImage(userGuess);
   let play = computerGuess();
+  fbRef.set({
+    player1pick: userGuess,
+    computerpick: play
+  })
   updateComputerTextUnderImage(computerReturn(play));
   return game(userGuess, play);
+
+
 })
 
 // THIS FUNCTION RUNS THE GAME CONDITIONS
