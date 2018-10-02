@@ -14,6 +14,33 @@ function gameChoiceReset() {
   html_cpu_image.src = "images/placeholder.jpg"
 }
 
+// GAME DOM UPDATES
+function updateImage(image) {
+  html_user_image.src = "images/" + image + ".jpg"
+}
+
+function updateUserTextUnderImage(text) {
+  userText.textContent = text.toUpperCase();
+}
+
+function updateComputerTextUnderImage(text) {
+  computerText.textContent = text.toUpperCase();
+}
+
+function resultTextUpdate(winLose) {
+  if (winLose === "win") {
+    result.textContent = "WIN";
+    result.style = "color: rgb(245, 188, 74)";
+  } else {
+    result.textContent = "YOU LOSE";
+    result.style = "color: rgb(243, 102, 82)";
+  }
+}
+
+function scoreUpdates() {
+  userScore.textContent = userScore_count;
+  computerScore.textContent = computerScore_count;
+}
 
 // SET THE FIREBASE VARIABLES
 var fbRef = firebase.database().ref();
@@ -57,21 +84,12 @@ var computerReturn = function (play) {
   return text;
 }
 
-// USER PLAYS ROCK
-// $("#rock").on("click", )
 $(".rps_pick").on("click", function () {
-
   userGuess = $(this).prop('id');
-  userText.textContent = userGuess.toUpperCase();
-
-  // DOM UPDATE, REMOVE INTO FUNCTION
-  html_user_image.src = "images/" + userGuess + ".jpg"
-
+  updateUserTextUnderImage(userGuess);
+  updateImage(userGuess);
   let play = computerGuess();
-
-  // DOM UPDATE, REMOVE INTO FUNCTION
-  computerText.textContent = computerReturn(play);
-
+  updateComputerTextUnderImage(computerReturn(play));
   return game(userGuess, play);
 })
 
@@ -86,52 +104,29 @@ let game = function (user, computer) {
   } else if (user == "rock") {
     if (computer == "scissors") {
       userScore_count = userScore_count + 1;
-      // userScore_count ++;
-
-      // DOM UPDATE, REMOVE INTO FUNCTION
-      result.textContent = "WIN";
-      result.style = "color: rgb(245, 188, 74)";
-
+      resultTextUpdate('win');
     } else if (computer == "paper") {
       computerScore_count = computerScore_count + 1;
-      result.textContent = "YOU LOSE";
-      result.style = "color: rgb(243, 102, 82)";
+      resultTextUpdate('lose');
     }
   } else if (user == "paper") {
     if (computer == "rock") {
       userScore_count = userScore_count + 1;
-
-      // DOM UPDATE, REMOVE INTO FUNCTION
-      result.textContent = "WIN";
-      result.style = "color: rgb(245, 188, 74)";
-
+      resultTextUpdate('win');
     } else if (computer == "scissors") {
       computerScore_count = computerScore_count + 1;
-
-      // DOM UPDATE, REMOVE INTO FUNCTION
-      result.textContent = "YOU LOSE";
-      result.style = "color: rgb(243, 102, 82)";
-
+      resultTextUpdate('lose');
     }
   } else if (user == "scissors") {
     if (computer == "paper") {
       userScore_count++;
-
-      // DOM UPDATE, REMOVE INTO FUNCTION
-      result.textContent = "WIN";
-      result.style = "color: rgb(245, 188, 74)";
+      resultTextUpdate('win');
 
     } else if (computer == "rock") {
       computerScore_count = computerScore_count + 1;
-
-      // DOM UPDATE, REMOVE INTO FUNCTION
-      result.textContent = "YOU LOSE";
-      result.style = "color: rgb(243, 102, 82)";
-
+      resultTextUpdate('lose');
     }
   }
-
-  // DOM UPDATE, REMOVE INTO FUNCTION
-  userScore.textContent = userScore_count;
-  computerScore.textContent = computerScore_count;
+  scoreUpdates();
 }
+
