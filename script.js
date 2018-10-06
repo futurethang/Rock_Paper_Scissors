@@ -44,6 +44,15 @@ function scoreUpdates() {
 
 // SET THE FIREBASE VARIABLES
 var fbRef = firebase.database().ref();
+
+fbRef.set(
+  {
+    player1pick: '',
+    computerpick: '',
+    bothSubmitted: false,
+    winner: '',
+  }
+)
 // the user selects a play and hits "submit"
 // requires action to store the selection in variable to send to fbRef
 // requires submit DOM element
@@ -89,14 +98,14 @@ $(".rps_pick").on("click", function () {
   updateUserTextUnderImage(userGuess);
   updateImage(userGuess);
   let play = computerGuess();
+
   fbRef.set({
     player1pick: userGuess,
     computerpick: play
   })
+
   updateComputerTextUnderImage(computerReturn(play));
   return game(userGuess, play);
-
-
 })
 
 // THIS FUNCTION RUNS THE GAME CONDITIONS
@@ -135,4 +144,25 @@ let game = function (user, computer) {
   }
   scoreUpdates();
 }
+
+
+// MODAL POPS UP TO TAKE PLAYER NAME
+// GAME CHECKS AGAINST FBDB TO SEE IF NAME EXISTS AND IF THERE ARE 2 PLAYERS TO START GAME
+fbRef.set({
+  playerName1: '',
+  playerName2: '',
+  playerPick1: '',
+  playerPick2: '',
+  gamesPlayed: 0,
+  playerWins1: 0,
+  playerWins2: 0,
+  ties: 0,
+}
+// INITIALIZE FBDB OBJECT TO KEEP SCORE AND STORE PICKS
+// MODAL IS GONE
+// DOM PROVIDES 3 PICKS TO CHOOSE FROM
+// USER'S SELECTION UPDATES FBDB
+// FBDB WAITS FOR BOTH USERS TO SUBMIT, THEN RUNS GAME LOGIC TO FIND WINNER
+// DOM READS FBDB OBJECT TO SELECT AND WRITE WIN/LOSE MESSAGE ON USERS CLIENT, UPDATE GAME, W/L COUNTS
+// RESET BUTTON TO SET DOM TO ALLOW PICKS FOR NEXT GAME AND REPEAT
 
