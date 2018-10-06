@@ -23,8 +23,8 @@ function updateUserTextUnderImage(text) {
   userText.textContent = text.toUpperCase();
 }
 
-function updateComputerTextUnderImage(text) {
-  computerText.textContent = text.toUpperCase();
+function updateplayerTwoTextUnderImage(text) {
+  playerTwoText.textContent = text.toUpperCase();
 }
 
 function resultTextUpdate(winLose) {
@@ -95,8 +95,7 @@ var userScore_count = 0;
 var playerTwoScore_count = 0;
 var num_games_count = 0;
 var userGuess;
-var computerGuess = function () { return computerChoices[Math.floor(Math.random() * computerChoices.length)]; }
-var computerReturn = function (play) {
+var playerTwoReturn = function (play) {
   var text;
   switch (play) {
     case "rock":
@@ -119,47 +118,48 @@ $(".rps_pick").on("click", function () {
   userGuess = $(this).prop('id');
   updateUserTextUnderImage(userGuess);
   updateImage(userGuess);
-  let play = computerGuess();
+  // BELOW IS OUTDATED, BUT GOOD FOR REF UNTIL REPLACED
+  // let play = computerGuess();
 
-  fbRef.set({
-    player1pick: userGuess,
-    computerpick: play
-  })
+  // fbRef.set({
+  //   player1pick: userGuess,
+  //   computerpick: play
+  // })
 
-  updateComputerTextUnderImage(computerReturn(play));
+  updateplayerTwoTextUnderImage(computerReturn(play));
   return game(userGuess, play);
 })
 
 // THIS FUNCTION RUNS THE GAME CONDITIONS
-let game = function (user, computer) {
+let game = function (playerOne, playerTwo) {
   num_games_count++;
   num_games.textContent = num_games_count;
 
-  if (user == computer) {
+  if (playerOne == playerTwo) {
     result.textContent = "Tie!";
     result.style = "color: rgb(99, 189, 187)";
-  } else if (user == "rock") {
-    if (computer == "scissors") {
+  } else if (playerOne == "rock") {
+    if (playerTwo == "scissors") {
       userScore_count = userScore_count + 1;
       resultTextUpdate('win');
-    } else if (computer == "paper") {
+    } else if (playerTwo == "paper") {
       playerTwoScore_count = playerTwoScore_count + 1;
       resultTextUpdate('lose');
     }
-  } else if (user == "paper") {
-    if (computer == "rock") {
+  } else if (playerOne == "paper") {
+    if (playerTwo == "rock") {
       userScore_count = userScore_count + 1;
       resultTextUpdate('win');
-    } else if (computer == "scissors") {
+    } else if (playerTwo == "scissors") {
       playerTwoScore_count = playerTwoScore_count + 1;
       resultTextUpdate('lose');
     }
-  } else if (user == "scissors") {
-    if (computer == "paper") {
+  } else if (playerOne == "scissors") {
+    if (playerTwo == "paper") {
       userScore_count++;
       resultTextUpdate('win');
 
-    } else if (computer == "rock") {
+    } else if (playerTwo == "rock") {
       playerTwoScore_count = playerTwoScore_count + 1;
       resultTextUpdate('lose');
     }
