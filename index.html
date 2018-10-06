@@ -11,23 +11,31 @@
 </head>
 
 <body>
+  <!-- modal to collect username -->
+  <div class="modal fade" id="usernameModal" tabindex="-1" role="dialog" aria-labelledby="usernameModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+              <div class="modal-header text-dark">
+                  <h5 class="modal-title" id="usernameModalTitle">Please enter a username to get started</h5>
+              </div>
+          <div class="modal-body">
+                  <div class="input-group mb-3">
+                      <input type="text" class="form-control" id="username" placeholder="Username" aria-label="Username" aria-describedby="username">
+                  </div>
+          </div>
+              <div class="modal-footer">
+                  <button type="button" class="username-btn btn btn-dark">Save</button>
+              </div>
+          </div>
+      </div>
+  </div>
   <div class="container">
     <div class="row score_row">
-      <div class="col-md-6">
+      <div class="col-md-6 mx-auto">
         <div class="card score_card" style="width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">YOU:</h5><img alt="rock paper scissors image" class="game_image" id="user_image" src="images/placeholder.jpg">
             <h1 class="text_result" id="user"></h1><span class="text_result">score:</span> <span class="score_keep" id="userScore"></span>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card score_card" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">COMPUTER:</h5><img alt="rock paper scissors image" class="game_image" id="cpu_image"
-              src="images/placeholder.jpg">
-            <h1 class="text_result" id="computer"></h1><span class="text_result">score:</span> <span class="score_keep"
-              id="computerScore"></span>
           </div>
         </div>
       </div>
