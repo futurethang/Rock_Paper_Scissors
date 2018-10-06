@@ -45,27 +45,16 @@ function scoreUpdates() {
 // SET THE FIREBASE VARIABLES
 var fbRef = firebase.database().ref();
 
-fbRef.set(
-  {
-    player1pick: '',
-    computerpick: '',
-    bothSubmitted: false,
-    winner: '',
-  }
-)
-// the user selects a play and hits "submit"
-// requires action to store the selection in variable to send to fbRef
-// requires submit DOM element
-// "Submit" writes the user choice to the right firebase ref for that player
-// fbRef.push(player1selection, player2selection,);
-// it waits for a second input to move forward
-// once a choice is made by both players, it runs to compare the selections
-// game(player1selection, player2selection);
-// displays are updated for each player
-// 
-// values for games won/lost are written to fbRef
-// fbRef.set(winner, loser);
-// new game ready
+fbRef.set({
+  playerName1: '',
+  playerName2: '',
+  playerPick1: '',
+  playerPick2: '',
+  gamesPlayed: 0,
+  playerWins1: 0,
+  playerWins2: 0,
+  ties: 0,
+})
 
 // SET THE USER AND COMPUTER VARIABLES      
 var computerChoices = ["rock", "paper", "scissors"];
@@ -147,17 +136,8 @@ let game = function (user, computer) {
 
 
 // MODAL POPS UP TO TAKE PLAYER NAME
+
 // GAME CHECKS AGAINST FBDB TO SEE IF NAME EXISTS AND IF THERE ARE 2 PLAYERS TO START GAME
-fbRef.set({
-  playerName1: '',
-  playerName2: '',
-  playerPick1: '',
-  playerPick2: '',
-  gamesPlayed: 0,
-  playerWins1: 0,
-  playerWins2: 0,
-  ties: 0,
-}
 // INITIALIZE FBDB OBJECT TO KEEP SCORE AND STORE PICKS
 // MODAL IS GONE
 // DOM PROVIDES 3 PICKS TO CHOOSE FROM
