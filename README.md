@@ -3,6 +3,9 @@ A stylized Rock Paper Scissors browser game, built with HTML, CSS and Javascript
 
 -----
 
+![NEW TEXT](https://user-images.githubusercontent.com/17099707/49615461-7a5fa580-f962-11e8-94b9-8c10db7bcf72.png)
+
+
 ![rock_paper_scissors](https://user-images.githubusercontent.com/17099707/45703077-2f36b300-bb28-11e8-9868-da563900559e.png)
 
 
